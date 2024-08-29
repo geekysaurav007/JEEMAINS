@@ -10,7 +10,7 @@ app.listen(3000, () => {
     console.log("RUNNING ON 3000")
 })
 app.get("",(req,resp)=>{
-    resp.json("heloo im working")
+    resp.json("heloo i m working Jee mains server will hbe live soon")
 })
 const apiRouter = express.Router()
 apiRouter.get('', (req, resp) => {
