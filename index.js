@@ -9,6 +9,9 @@ require('./database/connection')()
 app.listen(3000, () => {
     console.log("RUNNING ON 3000")
 })
+app.get("",(req,resp)=>{
+    resp.json("heloo im working")
+})
 const apiRouter = express.Router()
 apiRouter.get('', (req, resp) => {
     resp.json({ "message": "hello saurav" })
