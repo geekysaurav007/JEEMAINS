@@ -45,4 +45,8 @@ async function saveUsers(req, resp, next) {
     return resp.json({message:"email already exists"})
   }
 }
-module.exports = { loginUser, saveUsers };
+async function getAllUser(req, resp, next) {
+  const result=await User.find()
+  return resp.json(result);
+}
+module.exports = { loginUser, saveUsers,getAllUser };

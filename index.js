@@ -1,4 +1,5 @@
 const express = require('express');
+const {getAllUser}=require("./controllers/userController")
 require('dotenv').config()
 const morgan = require('morgan')
 const app = express()
@@ -10,11 +11,12 @@ app.listen(3000, () => {
     console.log("RUNNING ON 3000")
 })
 app.get("",(req,resp)=>{
-    resp.json("heloo i m working Jee mains server will hbe live soon")
+    resp.json("heloo i m working Jee result server will hbe live soon")
 })
 const apiRouter = express.Router()
-apiRouter.get('', (req, resp) => {
-    resp.json({ "message": "hello saurav" })
+apiRouter.get('', async(req, resp) => {
+    const data=await getAllUser()
+    resp.json({ "message": "hello saurav",data:data })
 })
 app.use('/api', apiRouter)
 
