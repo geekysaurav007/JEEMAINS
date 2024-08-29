@@ -1,6 +1,7 @@
 const { User } = require("../models/user");
 const passHash = require("password-hash");
 const jwt = require("jsonwebtoken");
+const generateUniqueId = require('generate-unique-id');
 
 async function loginUser(req, resp, next) {
   const { email, password } = req.body;
@@ -32,6 +33,11 @@ async function saveUsers(req, resp, next) {
   const user = await User.findOne({ email: req.body.email });
   if (!user) {
     userData.password = passHash.generate(userData.password);
+    const id2 = generateUniqueId({
+      length: 4,
+      useLetters: false
+    });
+    userData.roll_no=new Date().getFullYear()+userData.category+id2;
     const user = await new User(userData).save();
     return resp.json(user);
   } else {
