@@ -5,7 +5,8 @@ const morgan = require('morgan')
 const app = express()
 app.use(express.json())
 app.use(morgan('dev'))
-const { userRouter } = require('./routers/user')
+const { userRouter } = require('./routers/user');
+const { meritRouter } = require('./routers/merit');
 require('./database/connection')()
 app.listen(3000, () => {
     console.log("RUNNING ON 3000")
@@ -21,3 +22,4 @@ apiRouter.get('', async(req, resp) => {
 app.use('/api', apiRouter)
 
 apiRouter.use('/users', userRouter)
+apiRouter.use('/merit',meritRouter)

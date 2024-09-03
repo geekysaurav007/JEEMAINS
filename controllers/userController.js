@@ -34,7 +34,7 @@ async function saveUsers(req, resp, next) {
   if (!user) {
     userData.password = passHash.generate(userData.password);
     const id2 = generateUniqueId({
-      length: 4,
+      length: 10,
       useLetters: false
     });
     userData.roll_no=new Date().getFullYear()+userData.category+id2;
