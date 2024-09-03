@@ -4,10 +4,14 @@ require('dotenv').config()
 const morgan = require('morgan')
 const app = express()
 app.use(express.json())
+var cors=require('cors')
+app.use(cors({ origin: 'http://localhost:4200' }));
+
 app.use(morgan('dev'))
 const { userRouter } = require('./routers/user');
 const { meritRouter } = require('./routers/merit');
 require('./database/connection')()
+
 app.listen(3000, () => {
     console.log("RUNNING ON 3000")
 })

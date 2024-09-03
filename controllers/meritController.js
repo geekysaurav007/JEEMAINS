@@ -43,20 +43,12 @@ async function getMyMerit(req, resp) {
   return resp.json({ merit });
 }
 async function getAllMerit(req, resp) {
-  console.log("helllooooooo")
   let result = await Merit.find();
-  console.log(result)
   result= rankStudents(result)
   return resp.json(result);
 }
 
-async function getAllMerit2(req, resp) {
-  console.log("helllooooooo")
-  // let result = await Merit.find();
-  // console.log(result)
-  // result= rankStudents(result)
-  // return resp.json(result);
-}
+
 // 2024Gen563277296
-module.exports = { createMerit, getMyMerit, getAllMerit,getAllMerit2 };
+module.exports = { createMerit, getMyMerit, getAllMerit };
 

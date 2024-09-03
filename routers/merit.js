@@ -3,7 +3,7 @@ const {
   createMerit,
   getMyMerit,
   getAllMerit,
-  getAllMerit2,
+  
 } = require("../controllers/meritController");
 const meritRouter = express.Router();
 meritRouter.post("/create/:id", createMerit);
