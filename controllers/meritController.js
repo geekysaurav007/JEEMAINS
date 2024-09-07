@@ -40,7 +40,7 @@ async function getMyMerit(req, resp) {
     resp.status = 500;
     return resp.json({ merit });
   }
-  return resp.json({ merit,name:merit.id.name });
+  return resp.json({ merit });
 }
 async function getAllMerit(req, resp) {
   let result = await Merit.find();
