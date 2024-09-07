@@ -1,10 +1,7 @@
 const { Merit } = require("../models/merit");
 const { User } = require("../models/user");
 
-
-
-
- function rankStudents(result) {
+function rankStudents(result) {
   return result.sort((a, b) => {
     if (b.total !== a.total) {
       return b.total - a.total; // Sort by total marks first
@@ -35,7 +32,10 @@ async function createMerit(req, resp) {
 }
 async function getMyMerit(req, resp) {
   const roll_no = req.params.roll_no;
-  const merit = await Merit.findOne({ roll_no });
+  const merit = await Merit.findOne({ roll_no }).populate({
+    path: "user",
+    select: "name",
+  });
   if (!merit) {
     resp.status = 500;
     return resp.json({ merit });
@@ -44,11 +44,9 @@ async function getMyMerit(req, resp) {
 }
 async function getAllMerit(req, resp) {
   let result = await Merit.find();
-  result= rankStudents(result)
+  result = rankStudents(result);
   return resp.json(result);
 }
 
-
 // 2024Gen563277296
 module.exports = { createMerit, getMyMerit, getAllMerit };
-
