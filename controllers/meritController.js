@@ -33,14 +33,14 @@ async function createMerit(req, resp) {
 async function getMyMerit(req, resp) {
   const roll_no = req.params.roll_no;
   const merit = await Merit.findOne({ roll_no }).populate({
-    path: "user",
+    path: "id",
     select: "name",
   });
   if (!merit) {
     resp.status = 500;
     return resp.json({ merit });
   }
-  return resp.json({ merit });
+  return resp.json({ merit,name:merit.id.name });
 }
 async function getAllMerit(req, resp) {
   let result = await Merit.find();
