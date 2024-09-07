@@ -34,7 +34,6 @@ async function getMyMerit(req, resp) {
   const roll_no = req.params.roll_no;
   const merit = await Merit.findOne({ roll_no }).populate({
     path: "id",
-    select: "name",
   });
   if (!merit) {
     resp.status = 500;
