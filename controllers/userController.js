@@ -36,7 +36,7 @@ async function saveUsers(req, resp, next) {
     });
     userData.roll_no=new Date().getFullYear()+userData.category+id2;
     const user = await new User(userData).save();
-    return resp.json(user);
+    return resp.json({flag:true,user});
   } else {
     resp.status(400)
     return resp.json({message:"email already exists"})
