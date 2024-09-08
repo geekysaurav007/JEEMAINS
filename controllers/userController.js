@@ -27,9 +27,6 @@ async function loginUser(req, resp, next) {
 
 async function saveUsers(req, resp, next) {
   const userData = req.body;
-  if (userData.password !== userData.repassword) {
-    return next(new Error("password not matched"));
-  }
   const user = await User.findOne({ email: req.body.email });
   if (!user) {
     userData.password = passHash.generate(userData.password);
