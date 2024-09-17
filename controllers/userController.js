@@ -15,6 +15,7 @@ async function loginUser(req, resp, next) {
         _id: user._id,
         isAdmin: user.isAdmin,
         email: user.email,
+        roll_no:user.roll_no
       };
       // creating jwt token------->>>>>>
       const token = jwt.sign(payload, "JEEMAINS");
