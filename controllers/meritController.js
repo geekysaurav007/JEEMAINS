@@ -42,7 +42,9 @@ async function getMyMerit(req, resp) {
   return resp.json({ merit });
 }
 async function getAllMerit(req, resp) {
-  let result = await Merit.find();
+  let result = await Merit.find().populate({
+    path: "id",
+  });;
   result = rankStudents(result);
   return resp.json(result);
 }
