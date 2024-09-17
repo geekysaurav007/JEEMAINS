@@ -19,7 +19,7 @@ async function createMerit(req, resp) {
   console.log(result);
   if (!result) {
     resp.status = 500;
-    return resp.json({ mesage: "no rollno exists... please check your roll" });
+    return resp.json({ message: "no rollno exists... please check your roll",flag:false });
   }
   req.body.id = result._id;
   req.body.total =
@@ -28,7 +28,7 @@ async function createMerit(req, resp) {
     parseInt(req.body.maths);
   const response = await Merit(req.body).save();
 
-  return resp.json({ response });
+  return resp.json({ response,flag:true });
 }
 async function getMyMerit(req, resp) {
   const roll_no = req.params.roll_no;
