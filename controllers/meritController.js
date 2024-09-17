@@ -39,7 +39,7 @@ async function getMyMerit(req, resp) {
     resp.status = 500;
     return resp.json({ merit, message: "no merit exists", flag: false });
   }
-  return resp.json({ merit });
+  return resp.json({ merit ,flag:true});
 }
 async function getAllMerit(req, resp) {
   let result = await Merit.find().populate({
